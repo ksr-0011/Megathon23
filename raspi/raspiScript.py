@@ -22,7 +22,7 @@ from langchain.document_loaders import TextLoader
 import keyboard
 
 
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "YOUR_OPENAI_API_KEY"
 
 
 
