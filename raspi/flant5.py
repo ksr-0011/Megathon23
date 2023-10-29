@@ -6,6 +6,9 @@ from langchain.vectorstores import Vectara
 from langchain.document_loaders import TextLoader
 from langchain.embeddings import FakeEmbeddings
 import os
+import torch
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM,pipeline
+from langchain.llms import HuggingFacePipeline
 
 custom_prompt_template = """Use the following pieces of information to answer the user's question.
 If you don't know the answer, just say that you don't know, don't try to make up an answer.
