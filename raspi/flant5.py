@@ -1,12 +1,10 @@
 from langchain import PromptTemplate
 from langchain.llms import CTransformers
 from langchain.chains import RetrievalQA
-import chainlit as cl
 from langchain.vectorstores import Vectara
 from langchain.document_loaders import TextLoader
 from langchain.embeddings import FakeEmbeddings
 import os
-import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM,pipeline
 from langchain.llms import HuggingFacePipeline
 
@@ -63,14 +61,14 @@ def retrieval_qa_chain(llm, prompt):
 def load_llm():
     # Load the locally downloaded model here
     pipe = pipeline(
-    "text2text-generation",
-    model=model, 
-    tokenizer=tokenizer, 
-    max_length=512,
-    temperature=0,
-    top_p=0.95,
-    repetition_penalty=1.15
-)
+        "text2text-generation",
+        model=model, 
+        tokenizer=tokenizer, 
+        max_length=512,
+        temperature=0,
+        top_p=0.95,
+        repetition_penalty=1.15
+    )
 
     local_llm = HuggingFacePipeline(pipeline=pipe)
     return local_llm

@@ -12,8 +12,6 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-DB_VECTARA_PATH = 'vectorstore/db_vectara'
-
 custom_prompt_template = """Use the following pieces of information to answer the user's question.
 If you don't know the answer, just say that you don't know, don't try to make up an answer.
 
@@ -31,7 +29,7 @@ os.environ["VECTARA_API_KEY"] = 'zqt_BEk6DDXIwTm6XV4XmHgEZYcixR6SLJeoJ9iFUA'
 os.environ["VECTARA_CORPUS_ID"] = '1'
 
 def getdb():
-    loader = TextLoader(DATA_PATH + 'out.txt')
+    loader = TextLoader(DATA_PATH + 'out2.txt')
     documents = loader.load()
     global vectara_db
     vectara_db = Vectara.from_documents(documents , embedding=FakeEmbeddings(size=768))

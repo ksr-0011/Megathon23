@@ -3,6 +3,9 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { styled } from '@mui/material/styles';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import CircularProgress from '@mui/material/CircularProgress';
+import logo from '../nursee.png'
+import log2 from '../nurse-removebg-preview.png'
+
 const Div = styled('div')(({ theme }) => ({
   ...theme.typography.button,
   backgroundColor: '#363636',
@@ -26,12 +29,19 @@ export default function ChatWindow() {
   const [switchView, setSwitchView] = React.useState(0)
   return (
     <div className='columns is-mobile is-multiline' style={{ height: "100vh" }}>
+      <div className="column is-2-desktop is-4-mobile has-background-grey-darker">
+        <div className="has-text-light has-text-centered" style={{ height: "100vh" }}>
+          <Div className='is-size-5-desktop ' style={{ marginTop: "3vh" }}><b>MedMuni</b></Div>
+          <Div className="is-size-7-mobile" style={{ marginTop: "3vh" }}>AI-powered medical chatbot
+          </Div>
+        </div>
+      </div>
       
       {!switchView ?
         <div className="column" style={{ maxHeight: "100vh" }}>
           <div className="has-text-light has-text-centered" style={{ paddingTop: "30vh" }}>
             <h1 className="is-size-1-desktop is-size-3-mobile">Medical QA</h1>
-            <input id="input-prompt" value={prompt} onChange={(e) => { handlePromptChange(e) }} className=" mt-5 input is-white has-background-black-ter is-medium mb-6 has-text-grey" style={{ width: "50%" }} type="text" placeholder="Press the right arrow to start the QnA..." />
+            <input id="input-prompt" value={prompt} onChange={(e) => { handlePromptChange(e) }} className=" mt-5 input is-white has-background-black-ter is-medium mb-6 has-text-grey" style={{ width: "50%" }} type="text" placeholder="How may I help you?" />
             <button className='mt-5 button is-primary is-medium is-rounded has-text-black ml-4' onClick={async () => {
               setSend(1)
               setSwitchView(1)
@@ -52,6 +62,10 @@ export default function ChatWindow() {
               setMessages(arr)
               setSend(0)
             }}>
+              <div>
+              <img src={log2} alt="" width="70" height="90"/>
+              </div>
+              
               <ArrowForwardIcon />
             </button>
           </div>
@@ -97,6 +111,9 @@ export default function ChatWindow() {
               setMessages(arr)
               setSend(0)
             }}>
+               <div>
+              <img src={log2} alt="" width="70" height="90"/>
+              </div>
               <ArrowUpwardIcon />
             </button>
             <button className='mt-5 button is-primary is-medium is-rounded has-text-black ml-4' onClick={async () => {
@@ -106,7 +123,7 @@ export default function ChatWindow() {
               
             }}>
              Home
-            </button></>:<CircularProgress className='mt-5 is-medium is-rounded ml-4'/>}
+            </button></>:<img src={logo} alt="" width="70" height="90"/>}
           </div>
         </div>}
     </div >
